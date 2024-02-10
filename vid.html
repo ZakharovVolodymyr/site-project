@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регістрація</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body style="background-image: url('back.jpg')">
+    <form id="registrationForm" style="width: 20%; margin-left: 40%; margin-top: 10%; background-color: lightgreen; padding-bottom: 5%; padding-top: 5%; display: flex; flex-direction: column; justify-content: Space-around; align-items: center;">
+		<div>
+        <label for="firstName">Им'я:</label>
+        <input type="text" id="firstName" name="firstName" pattern="[A-Za-z-]+" required>
+		</div>
+		<div>
+        <label for="lastName">Фамілія:</label>
+        <input type="text" id="lastName" name="lastName" pattern="[A-Za-z-]+" required>
+		</div>
+		<div>
+        <label for="email">Електронна пошта:</label>
+        <input type="email" id="email" name="email" pattern=".+@gmail\.com" required>
+		</div>
+		<div>
+        <label for="phone">Номер телефону:</label>
+        <input type="tel" id="phone" name="phone" required pattern="\+\d{7,9}">
+		</div>
+		<div>
+        <label for="review">Відгук:</label>
+        <textarea id="review" name="review" rows="4" required></textarea>
+
+		</div>
+		<br>
+		
+        <button type="button" onclick="validateForm()">Надіслати відгук</button>
+		
+    </form>
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var review = document.getElementById("review").value;
+
+            var namePattern = /[A-Za-z-]+/;
+            var emailPattern = /.+@gmail\.com/;
+            var phonePattern = /\+[0-9]{7,9}/;
+
+            if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+                alert("Им'я та фамілія повинні мати лише літери та \"-\".");
+            } else if (!emailPattern.test(email)) {
+                alert("Електронна пошта повинна закінчюватися на '@gmail.com'.");
+            } else if (!phonePattern.test(phone)) {
+                alert("Номер телефону повинен починатися з '+' і мати від 10 до 12 цифр.");
+            } else {
+                alert("Відгук надісланий!");
+            }
+        }
+    </script>
+</body>
+</html>
